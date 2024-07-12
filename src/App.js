@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { procductData } from './api/api';
+import ProductCard from './components/card';
+import Cart from './components/cart';
 import './App.css';
 
-function App() {
+
+
+function  App() {
+
+  const [products, setProducts] = useState([]);
+  useEffect(() =>{
+    procductData().then((data) => setProducts(data));
+  },[])
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Cart/>
+      <div className="container-fluid row">
+      
+        {
+          products ? products.map((product)=>(<ProductCard value={product}/>)) : <h1> Loading... </h1>
+        }
+      </div>
+    </>
   );
 }
 
