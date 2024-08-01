@@ -1,6 +1,10 @@
 {
   "name": "adshop",
   "version": "0.1.0",
+  "description": "Shop Website",
+  "author": "AYUSH DHAR",
+  "git": "https://github.com/dharayush7/adshop.git",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
